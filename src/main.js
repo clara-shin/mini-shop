@@ -20,9 +20,37 @@ function createHTMLString(item) {
         </li>
     `;
 }
+
+// html > data-*
+// js > e.target.dataset
+function onButtonClick(event, items) {
+    const dataset = event.target.dataset;
+    const key = dataset.key;
+    const value = dataset.value;
+    if (key == null || value == null) return;
+
+    const filtered = items.filter((item) => item[key] == value);
+    displayItems(filtered);
+}
+
+// Event Delegation (이벤트 위임)
+// 버튼이 들어있는 컨테이너 자치를 등록
+// 컨테이너에 이벤트 리스너 등록 > 한 곳ㅔ서만 핸들링(효율적)
+function setEventListener(items) {
+    const logo = document.querySelector('.logo');
+    const buttons = document.querySelector('.buttons');
+
+    logo.addEventListener('click', () => {
+        displayItems(items);
+    });
+    buttons.addEventListener('click', (event) => {
+        onButtonClick(event, items);
+    });
+}
 loadItems() //
     .then((items) => {
         // console.log(items);
         displayItems(items);
+        setEventListener(items);
     })
     .catch(console.log);
