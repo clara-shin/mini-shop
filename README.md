@@ -2,9 +2,9 @@
 
 ## VanillaJS를 이용한 미니 숍
 
-<center>
+
 <img src="https://github.com/clara-shin/mini-shop/assets/27764950/71b758a0-ef16-4ccf-8ffc-9ddfab50b355" width="300" >
-</center>
+
 
 -   배운 것:
 
